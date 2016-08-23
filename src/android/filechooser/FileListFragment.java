@@ -27,6 +27,7 @@ import android.widget.ListView;
 
 import java.io.File;
 import java.util.List;
+import fr.matmut.app.mamatmut.R;
 
 /**
  * Fragment that displays a list of Files in a given path.
