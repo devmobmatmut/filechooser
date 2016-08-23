@@ -37,6 +37,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.text.DecimalFormat;
 import java.util.Comparator;
+import fr.matmut.app.mamatmut.R;
 
 /**
  * @version 2009-07-03
