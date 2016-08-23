@@ -71,7 +71,6 @@
         <source-file src="src/android/filechooser/FileLoader.java" target-dir="src/com/ipaulpro/afilechooser" />
         <source-file src="src/android/filechooser/FileUtils.java" target-dir="src/com/ipaulpro/afilechooser/utils" />        
         <source-file src="src/android/filechooser/LocalStorageProvider.java" target-dir="src/com/ianhanniballake/localstorage" />
-        <source-file src="src/android/filechooser/libs/android-support-v4.jar" target-dir="libs/" />
 
         <!-- res files -->
         <source-file src="src/android/filechooser/res/drawable-hdpi/ic_chooser.png" target-dir="res/drawable" />
