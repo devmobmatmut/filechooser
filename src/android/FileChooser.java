@@ -21,6 +21,7 @@ import org.apache.cordova.CordovaResourceApi;
 import org.apache.cordova.PluginResult;
 
 import com.ipaulpro.afilechooser.utils.FileUtils;
+import fr.matmut.app.mamatmut.R;
 
 /**
  * FileChooser is a PhoneGap plugin that acts as polyfill for Android KitKat and web
