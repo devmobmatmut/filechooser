@@ -26,6 +26,7 @@ import android.widget.TextView;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import fr.matmut.app.mamatmut.R;
 
 /**
  * List adapter for Files.
