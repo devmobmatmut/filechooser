@@ -26,6 +26,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import fr.matmut.app.mamatmut.R;
 
 /**
  * Loader that returns a list of Files in a given file path.
