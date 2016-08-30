@@ -62,7 +62,7 @@ public class FileChooser extends CordovaPlugin {
                             final String path = FileUtils.getPath(this.cordova.getActivity(), uri);
                             final String mimeType = FileUtils.getMimeType(this.cordova.getActivity(), uri);
                             obj.put("filepath", path);
-                            obj.put("mimeType", type);
+                            obj.put("mimeType", mimeType);
                             this.callbackContext.success(obj);
                         } catch (Exception e) {
                             Log.e("FileChooser", "File select error", e);
