@@ -355,6 +355,17 @@ public class FileUtils {
         }
         return null;
     }
+    
+    public static long getSize(Context context, URI uri) {
+        if (uri != null) {
+            String path = getPath(context, uri);
+            if (path != null && isLocal(path)) {
+                File tmp = new File(path);
+                return tmp.length();
+            }
+        }
+        return 0L;
+    }
 
     /**
      * Get the file size in a human-readable string.
