@@ -356,7 +356,7 @@ public class FileUtils {
         return null;
     }
     
-    public static long getSize(Context context, URI uri) {
+    public static long getSize(Context context, Uri uri) {
         if (uri != null) {
             String path = getPath(context, uri);
             if (path != null && isLocal(path)) {
