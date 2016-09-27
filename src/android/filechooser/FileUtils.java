@@ -240,6 +240,32 @@ public class FileUtils {
         }
         return null;
     }
+    
+    public static String getDataName(Context context, Uri uri, String selection,
+            String[] selectionArgs) {
+
+        Cursor cursor = null;
+        final String column = "_display_name";
+        final String[] projection = {
+                column
+        };
+
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                if (DEBUG)
+                    DatabaseUtils.dumpCursor(cursor);
+
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
 
     /**
      * Get a file path from a Uri. This will get the the path for Storage Access
