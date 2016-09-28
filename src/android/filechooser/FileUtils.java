@@ -205,6 +205,14 @@ public class FileUtils {
     }
 
     /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is Google Drive Documents.
+     */
+    public static boolean isGoogleDriveUri(Uri uri) {
+        return "com.google.android.apps.docs.storage".equals(uri.getAuthority());
+    }
+    
+    /**
      * Get the value of the data column for this Uri. This is useful for
      * MediaStore Uris, and other file-based ContentProviders.
      *
@@ -246,6 +254,58 @@ public class FileUtils {
 
         Cursor cursor = null;
         final String column = "_display_name";
+        final String[] projection = {
+                column
+        };
+
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                if (DEBUG)
+                    DatabaseUtils.dumpCursor(cursor);
+
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
+    
+    public static long getDataSize(Context context, Uri uri, String selection,
+            String[] selectionArgs) {
+
+        Cursor cursor = null;
+        final String column = "_size";
+        final String[] projection = {
+                column
+        };
+
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                if (DEBUG)
+                    DatabaseUtils.dumpCursor(cursor);
+
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getLong(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return 0L;
+    }
+	
+	public static String getDataMimeType(Context context, Uri uri, String selection,
+            String[] selectionArgs) {
+
+        Cursor cursor = null;
+        final String column = "mime_type";
         final String[] projection = {
                 column
         };
@@ -360,6 +420,10 @@ public class FileUtils {
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
             return uri.getPath();
         }
+        if (isGoogleDriveUri(uri)) {
+			File file = new File(uri.toString());
+			return file.getPath().replace("content:","");
+		}
 
         return null;
     }
